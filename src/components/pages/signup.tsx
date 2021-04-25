@@ -14,6 +14,7 @@ import {
 } from "antd";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { signUpUser } from "../../api/controller";
 
 const { Title } = Typography;
 
@@ -27,18 +28,21 @@ const Signup = () => {
   const history = useHistory();
 
   const handleSubmit = (values: any) => {
+
     setLoading(true);
-    axios
-      .post(`http://localhost:5000/users`, values)
-      .then((res) => {
-        setLoading(false);
-        message.success("User Added Successfully!");
-        history.push("/list");
-      })
-      .catch((error) => {
-        setLoading(false);
-        message.error(error);
-      });
+    console.log(values);
+
+    // axios
+    //   .post(`http://localhost:5000/users`, values)
+    //   .then((res) => {
+    //     setLoading(false);
+    //     message.success("User Added Successfully!");
+    //     history.push("/list");
+    //   })
+    //   .catch((error) => {
+    //     setLoading(false);
+    //     message.error(error);
+    //   });
   };
 
   return (

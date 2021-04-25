@@ -9,9 +9,8 @@ import {
   message,
   Checkbox,
 } from "antd";
-import axios from "axios";
 import { useHistory } from "react-router";
-import { loginUser } from "../../api/controller";
+import { loginUser } from '../../api/controller';
 
 const { Title } = Typography;
 
@@ -27,46 +26,20 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = (values: any) => {
-    setLoading(true);
-    debugger;
-
-    loginUser("maahibhama@gmail.com", "Maahi@123" ).then(res => {
-      debugger;
-    }).catch(err=>{
-      debugger;
-    })
-  //   const loginUserQuery = `
-  //   query($email: String!, $password: String!) {
-  //     loginUser(email: $email, password: $password){
-  //       id
-  //       name
-  //       email
-  //     }
-  //   }`
-  //   const info = {
-  //     query: loginUserQuery,
-  //     variables: {
-  //         email: "maahibhama@gmail.com",
-  //         password: "Maahi@123"
-  //     }
-  // }
-  //   axios
-  //     .post(`http://localhost:4000/graphql`, info)
-  //     .then((res) => {
-  //       debugger;
-  //       setLoading(false);
-  //       //message.success("User Added Successfully!");
-  //       //history.push("/list");
-  //     })
-  //     .catch((error) => {
-  //       debugger;
-  //       setLoading(false);
-  //       //message.error(error);
-  //     });
-  };
 
   const onFinish = (values: any) => {
+    setLoading(true);
+
+    loginUser(values.email, values.password ).then(res => {
+
+      console.log(res);
+    }).catch(err=>{
+      setLoading(false);
+      alert(err);
+      console.log(err);
+      debugger;
+    })
+
     console.log("Success:", values);
   };
 
@@ -93,10 +66,10 @@ const Login = () => {
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
-              label="Username"
-              name="username"
+              label="Email"
+              name="email"
               rules={[
-                { required: true, message: "Please input your username!" },
+                { required: true, message: "Please input your Email!" },
               ]}
             >
               <Input />
@@ -117,7 +90,7 @@ const Login = () => {
             </Form.Item>
 
             <div style={{ textAlign: "right" }}>
-              <Button type="primary" onClick={handleSubmit} loading={loading} htmlType="submit">
+              <Button type="primary" loading={loading} htmlType="submit">
                 Login
               </Button>{" "}
               <Button
