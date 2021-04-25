@@ -5,11 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import List from "../components/pages/list";
-import Form from "../components/pages/form";
 import SideNav from "../components/layouts/sidebar";
-import File from "../components/pages/files";
-import Videos from "../components/pages/videos";
 
 import { Layout } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
@@ -61,10 +57,6 @@ const ApplicationRoutes = () => {
             }}
           >
             <Switch>
-              <Route path="/list" component={List} />
-              <Route path="/form" component={Form} />
-              <Route path="/files" component={File} />
-              <Route path="/videos" component={Videos} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/home" component={Home} />

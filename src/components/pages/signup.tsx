@@ -228,12 +228,12 @@ const Signup = () => {
 
             <div style={{ textAlign: "right" }}>
               <Button type="primary" loading={loading} htmlType="submit">
-                Save
+                Sign up
               </Button>{" "}
               <Button
                 type="dashed"
                 htmlType="button"
-                onClick={() => history.push("/list")}
+                onClick={() => history.push("/login")}
               >
                 Back
               </Button>

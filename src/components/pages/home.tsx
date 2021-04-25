@@ -14,6 +14,7 @@ import {
 } from "antd";
 import PlanList from "./planlist";
 import BookingList from "./bookinglist";
+import SlotList from "./slotlist";
 
 const Home = () => {
 
@@ -41,7 +42,7 @@ const Home = () => {
 
       {selectedButtonIndex == 0 && <PlanList />}
       {selectedButtonIndex == 1 && <BookingList />}
-      {selectedButtonIndex == 2 && <PlanList />}
+      {selectedButtonIndex == 2 && <SlotList />}
     </div>
   );
 };

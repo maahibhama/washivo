@@ -98,7 +98,7 @@ const Login = () => {
               <Button
                 type="dashed"
                 htmlType="button"
-                onClick={() => history.push("/list")}
+                onClick={() => history.push("/signup")}
               >
                 Signup
               </Button>
