@@ -9,9 +9,8 @@ import {
   message,
   Checkbox,
 } from "antd";
-import axios from "axios";
 import { useHistory } from "react-router";
-import { loginUser } from "../../api/controller";
+import { loginUser } from '../../api/controller';
 
 const { Title } = Typography;
 
@@ -29,15 +28,21 @@ const Login = () => {
 
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
-    setLoading(true);
-    debugger;
 
-    loginUser(values.username, values.password ).then(res => {
-      debugger;
+    setLoading(true);
+
+
+    loginUser(values.email, values.password ).then(res => {
+
+      console.log(res);
+
     }).catch(err=>{
+      setLoading(false);
+      alert(err);
+      console.log(err);
       debugger;
     })
+
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -63,10 +68,12 @@ const Login = () => {
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
-              label="Username/email"
-              name="username"
+
+              label="Email"
+              name="email"
+
               rules={[
-                { required: true, message: "Please input your username!" },
+                { required: true, message: "Please input your Email!" },
               ]}
             >
               <Input />
