@@ -222,6 +222,22 @@ const editUserMutation = `
 
 `;
 
+const deleteUserMutation = `
+    mutation($id:String, $email:String){
+      deleteUser(id:$id, email:$email){
+        id
+            name
+            email
+            password
+            address
+            city
+            gender
+            phoneNumber
+            type
+      }
+    }
+`;
+
 export {
   loginUserQuery,
   signUpMutation,
@@ -235,6 +251,7 @@ export {
   getAllVehicalsQuery,
   getSlotByIdQuery,
   getAllSlotsQuery,
-  editUserMutation
+  editUserMutation,
+  deleteUserMutation
 };
 

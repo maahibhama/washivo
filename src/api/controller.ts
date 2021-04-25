@@ -13,7 +13,8 @@ import {
   getAllVehicalsQuery,
   getSlotByIdQuery,
   getAllSlotsQuery,
-  editUserMutation
+  editUserMutation,
+  deleteUserMutation
 }
   from "./query";
 
@@ -293,7 +294,25 @@ const editUser = (id: string,
         reject(error);
       })
   });
+}
 
+const deleteUser = (id: string, email: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: deleteUserMutation,
+        variables: {
+          id,
+          email
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
 
 }
 
@@ -310,5 +329,6 @@ export {
   getAllVehicals,
   getSlotByIdStartTime,
   getAllSlots,
-  editUser
+  editUser,
+  deleteUser
 };
