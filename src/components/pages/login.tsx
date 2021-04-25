@@ -35,6 +35,8 @@ const Login = () => {
 
     loginUser(values.email, values.password ).then(res => {
       debugger;
+      setLoading(false);
+      //TODO: Push to home page
       console.log(res);
 
     }).catch(err=>{
