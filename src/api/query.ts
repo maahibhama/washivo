@@ -111,7 +111,18 @@ const getPlanByNameQuery = `
       rating_comments
     }
   }
+`;
 
+const getAllPlansQuery = `
+  query{
+    plan{
+      name
+      description
+      price
+      rating
+      rating_comments
+    }
+  }
 `;
 
 export {
@@ -121,5 +132,6 @@ export {
   getAllUsersQuery,
   getBookingQuery,
   getAllBookingsQuery,
-  getPlanByNameQuery
+  getPlanByNameQuery,
+  getAllPlansQuery
 };
