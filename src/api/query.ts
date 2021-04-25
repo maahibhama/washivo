@@ -50,8 +50,24 @@ const getUserQuery = `
       phoneNumber
     }
   }
-
-
 `;
 
-export { loginUserQuery, signUpQuery, getUserQuery };
+const getAllUsersQuery = `{
+  query{
+    users{
+      id
+      name
+      email
+      address
+      type
+      phoneNumber
+    }
+  }
+}`
+
+export {
+  loginUserQuery,
+  signUpQuery,
+  getUserQuery,
+  getAllUsersQuery
+};

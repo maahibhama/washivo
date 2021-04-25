@@ -3,7 +3,9 @@ import { baseUrl } from "./connection";
 import {
   loginUserQuery,
   signUpQuery,
-  getUserQuery
+  getUserQuery,
+  getAllUsersQuery
+
 } from "./query";
 
 const loginUser = (email: string, password: string) => {
@@ -80,8 +82,28 @@ const getUserById = (id: string) => {
   });
 
 }
+
+const getAllUsers = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getUserQuery,
+        variables: {
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+}
+
 export {
   loginUser,
   signUpUser,
-  getUserById
+  getUserById,
+  getAllUsers
 };
