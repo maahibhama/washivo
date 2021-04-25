@@ -101,11 +101,25 @@ const getAllBookingsQuery = `
   }
 `;
 
+const getPlanByNameQuery = `
+  query($id: String!){
+    plan(id: $id){
+      name
+      description
+      price
+      rating
+      rating_comments
+    }
+  }
+
+`;
+
 export {
   loginUserQuery,
   signUpQuery,
   getUserQuery,
   getAllUsersQuery,
   getBookingQuery,
-  getAllBookingsQuery
+  getAllBookingsQuery,
+  getPlanByNameQuery
 };

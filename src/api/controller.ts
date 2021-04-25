@@ -6,7 +6,8 @@ import {
   getUserQuery,
   getAllUsersQuery,
   getBookingQuery,
-  getAllBookingsQuery
+  getAllBookingsQuery,
+  getPlanByNameQuery
 
 } from "./query";
 
@@ -141,11 +142,31 @@ const getAllBookings = () => {
 
 }
 
+const getPlanByName = (name: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getPlanByNameQuery,
+        variables: {
+          name
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+}
+
 export {
   loginUser,
   signUpUser,
   getUserById,
   getAllUsers,
   getBookingById,
-  getAllBookings
+  getAllBookings,
+  getPlanByName
 };
