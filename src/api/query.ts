@@ -52,7 +52,7 @@ const getUserQuery = `
   }
 `;
 
-const getAllUsersQuery = `{
+const getAllUsersQuery = `
   query{
     users{
       id
@@ -63,11 +63,31 @@ const getAllUsersQuery = `{
       phoneNumber
     }
   }
-}`
+`
+
+const getBookingQuery = `
+  query($id: String!){
+    booking(id: $id){
+      id
+      slot_id
+      price
+      description
+      payment_mode
+      payment_status
+      status
+      washer_rating
+      plan_rating
+      washer_rating_comment
+      plan_rating_comment
+    }
+  }
+`;
+
 
 export {
   loginUserQuery,
   signUpQuery,
   getUserQuery,
-  getAllUsersQuery
+  getAllUsersQuery,
+  getBookingQuery
 };

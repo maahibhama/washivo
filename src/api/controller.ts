@@ -4,7 +4,8 @@ import {
   loginUserQuery,
   signUpQuery,
   getUserQuery,
-  getAllUsersQuery
+  getAllUsersQuery,
+  getBookingQuery
 
 } from "./query";
 
@@ -101,9 +102,29 @@ const getAllUsers = () => {
 
 }
 
+const getBookingById = (id: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getAllUsersQuery,
+        variables: {
+          id
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+}
+
 export {
   loginUser,
   signUpUser,
   getUserById,
-  getAllUsers
+  getAllUsers,
+  getBookingById
 };
