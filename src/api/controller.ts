@@ -106,7 +106,7 @@ const getBookingById = (id: string) => {
   return new Promise((resolve, reject) => {
     axios
       .post(baseUrl, {
-        query: getAllUsersQuery,
+        query: getBookingQuery,
         variables: {
           id
         },
