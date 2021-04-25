@@ -87,7 +87,7 @@ const getAllUsers = () => {
   return new Promise((resolve, reject) => {
     axios
       .post(baseUrl, {
-        query: getUserQuery,
+        query: getAllUsersQuery,
         variables: {
         },
       }).then(response => {
