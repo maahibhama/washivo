@@ -27,47 +27,17 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = (values: any) => {
+
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
     setLoading(true);
     debugger;
 
-    loginUser("maahibhama@gmail.com", "Maahi@123" ).then(res => {
+    loginUser(values.username, values.password ).then(res => {
       debugger;
     }).catch(err=>{
       debugger;
     })
-  //   const loginUserQuery = `
-  //   query($email: String!, $password: String!) {
-  //     loginUser(email: $email, password: $password){
-  //       id
-  //       name
-  //       email
-  //     }
-  //   }`
-  //   const info = {
-  //     query: loginUserQuery,
-  //     variables: {
-  //         email: "maahibhama@gmail.com",
-  //         password: "Maahi@123"
-  //     }
-  // }
-  //   axios
-  //     .post(`http://localhost:4000/graphql`, info)
-  //     .then((res) => {
-  //       debugger;
-  //       setLoading(false);
-  //       //message.success("User Added Successfully!");
-  //       //history.push("/list");
-  //     })
-  //     .catch((error) => {
-  //       debugger;
-  //       setLoading(false);
-  //       //message.error(error);
-  //     });
-  };
-
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -93,7 +63,7 @@ const Login = () => {
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
-              label="Username"
+              label="Username/email"
               name="username"
               rules={[
                 { required: true, message: "Please input your username!" },
@@ -117,7 +87,7 @@ const Login = () => {
             </Form.Item>
 
             <div style={{ textAlign: "right" }}>
-              <Button type="primary" onClick={handleSubmit} loading={loading} htmlType="submit">
+              <Button type="primary" loading={loading} htmlType="submit">
                 Login
               </Button>{" "}
               <Button
