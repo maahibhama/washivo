@@ -4,17 +4,54 @@ const loginUserQuery = `
         id
         name
         email
+        address
+        type
+        phoneNumber
       }
     }`;
 
 const signUpQuery = `
-addUser(
-  name: String!
-  email: String!
-  password: String!
-  address: String
-  city: String
-  gender: String
-  phoneNumber: String): User`;
+mutation(
+  $name: String!
+  $email: String!
+  $password: String!
+  $address: String
+  $city: String
+  $gender: String
+  $phoneNumber: String
+  $type: String){
+    addUser(
+      name: $name
+      email: $email
+      password: $password
+      address: $address
+      city: $city
+      gender: $gender
+      phoneNumber: $phoneNumber
+      type: $type){
+        id
+        name
+        email
+        address
+        type
+        phoneNumber
+      }
+  }
+`;
 
-export { loginUserQuery, signUpQuery };
+const getUserQuery = `
+  query($id: String!){
+    user(id: $id){
+      id
+      name
+      email
+      address
+      type
+      phoneNumber
+    }
+  }
+
+
+`;
+
+export { loginUserQuery, signUpQuery, getUserQuery };

@@ -1,6 +1,10 @@
 import axios from "axios";
 import { baseUrl } from "./connection";
-import { loginUserQuery, signUpQuery } from "./query";
+import {
+  loginUserQuery,
+  signUpQuery,
+  getUserQuery
+} from "./query";
 
 const loginUser = (email: string, password: string) => {
   return new Promise((resolve, reject) => {
@@ -58,7 +62,26 @@ const signUpUser = (name: string,
   });
 }
 
+const getUserById = (id: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getUserQuery,
+        variables: {
+          id
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+}
 export {
   loginUser,
-  signUpUser
+  signUpUser,
+  getUserById
 };
