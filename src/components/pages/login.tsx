@@ -11,6 +11,7 @@ import {
 } from "antd";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { loginUser } from "../../api/controller";
 
 const { Title } = Typography;
 
@@ -28,17 +29,41 @@ const Login = () => {
 
   const handleSubmit = (values: any) => {
     setLoading(true);
-    axios
-      .post(`http://localhost:5000/users`, values)
-      .then((res) => {
-        setLoading(false);
-        message.success("User Added Successfully!");
-        history.push("/list");
-      })
-      .catch((error) => {
-        setLoading(false);
-        message.error(error);
-      });
+    debugger;
+
+    loginUser("maahibhama@gmail.com", "Maahi@123" ).then(res => {
+      debugger;
+    }).catch(err=>{
+      debugger;
+    })
+  //   const loginUserQuery = `
+  //   query($email: String!, $password: String!) {
+  //     loginUser(email: $email, password: $password){
+  //       id
+  //       name
+  //       email
+  //     }
+  //   }`
+  //   const info = {
+  //     query: loginUserQuery,
+  //     variables: {
+  //         email: "maahibhama@gmail.com",
+  //         password: "Maahi@123"
+  //     }
+  // }
+  //   axios
+  //     .post(`http://localhost:4000/graphql`, info)
+  //     .then((res) => {
+  //       debugger;
+  //       setLoading(false);
+  //       //message.success("User Added Successfully!");
+  //       //history.push("/list");
+  //     })
+  //     .catch((error) => {
+  //       debugger;
+  //       setLoading(false);
+  //       //message.error(error);
+  //     });
   };
 
   const onFinish = (values: any) => {
@@ -92,7 +117,7 @@ const Login = () => {
             </Form.Item>
 
             <div style={{ textAlign: "right" }}>
-              <Button type="primary" loading={loading} htmlType="submit">
+              <Button type="primary" onClick={handleSubmit} loading={loading} htmlType="submit">
                 Login
               </Button>{" "}
               <Button
