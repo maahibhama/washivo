@@ -10,7 +10,8 @@ import {
   getPlanByNameQuery,
   getAllPlansQuery,
   getVehicalByNameQuery,
-  getAllVehicalsQuery
+  getAllVehicalsQuery,
+  getSlotByIdQuery
 }
   from "./query";
 
@@ -219,6 +220,27 @@ const getAllVehicals = () => {
 
 }
 
+const getSlotByIdStartTime = (id: string, startTime: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getVehicalByNameQuery,
+        variables: {
+          id,
+          startTime
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+}
+
+
 
 
 export {
@@ -231,5 +253,6 @@ export {
   getPlanByName,
   getAllPlans,
   getVehicalByName,
-  getAllVehicals
+  getAllVehicals,
+  getSlotByIdStartTime
 };

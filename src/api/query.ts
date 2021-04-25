@@ -153,6 +153,23 @@ const getAllVehicalsQuery = `
   }
 `;
 
+const getSlotByIdQuery = `
+  query($id: String!, $startTime: String!){
+    slot(id: $id, startTime: $startTime){
+      id
+      startTime
+      durationInMinutes
+      washer_id
+      client_id
+      vehical_id
+      availablity
+      plan_id
+      booking_id
+      status
+    }
+  }
+`;
+
 export {
   loginUserQuery,
   signUpQuery,
@@ -163,5 +180,6 @@ export {
   getPlanByNameQuery,
   getAllPlansQuery,
   getVehicalByNameQuery,
-  getAllVehicalsQuery
+  getAllVehicalsQuery,
+  getSlotByIdQuery
 };
