@@ -170,6 +170,23 @@ const getSlotByIdQuery = `
   }
 `;
 
+const getAllSlotsQuery = `
+  query{
+    slots{
+      id
+      startTime
+      durationInMinutes
+      washer_id
+      client_id
+      vehical_id
+      availablity
+      plan_id
+      booking_id
+      status
+    }
+  }
+`;
+
 export {
   loginUserQuery,
   signUpQuery,
@@ -181,5 +198,7 @@ export {
   getAllPlansQuery,
   getVehicalByNameQuery,
   getAllVehicalsQuery,
-  getSlotByIdQuery
+  getSlotByIdQuery,
+  getAllSlotsQuery
 };
+

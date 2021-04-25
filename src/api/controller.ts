@@ -11,7 +11,8 @@ import {
   getAllPlansQuery,
   getVehicalByNameQuery,
   getAllVehicalsQuery,
-  getSlotByIdQuery
+  getSlotByIdQuery,
+  getAllSlotsQuery
 }
   from "./query";
 
@@ -224,7 +225,7 @@ const getSlotByIdStartTime = (id: string, startTime: string) => {
   return new Promise((resolve, reject) => {
     axios
       .post(baseUrl, {
-        query: getVehicalByNameQuery,
+        query: getSlotByIdQuery,
         variables: {
           id,
           startTime
@@ -240,8 +241,23 @@ const getSlotByIdStartTime = (id: string, startTime: string) => {
 
 }
 
+const getAllSlots = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getAllSlotsQuery,
+        variables: {
 
-
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+}
 
 export {
   loginUser,
