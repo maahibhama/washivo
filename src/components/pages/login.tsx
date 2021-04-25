@@ -28,11 +28,14 @@ const Login = () => {
 
 
   const onFinish = (values: any) => {
+
     setLoading(true);
+
 
     loginUser(values.email, values.password ).then(res => {
 
       console.log(res);
+
     }).catch(err=>{
       setLoading(false);
       alert(err);
@@ -40,7 +43,6 @@ const Login = () => {
       debugger;
     })
 
-    console.log("Success:", values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -66,8 +68,10 @@ const Login = () => {
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
+
               label="Email"
               name="email"
+
               rules={[
                 { required: true, message: "Please input your Email!" },
               ]}
