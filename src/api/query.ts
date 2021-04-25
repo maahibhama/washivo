@@ -125,6 +125,34 @@ const getAllPlansQuery = `
   }
 `;
 
+const getVehicalByNameQuery = `
+  query($name: String){
+    vehical(name: $name){
+      name
+	    type
+	    brand
+	    year
+	    vehical_no
+	    client_id
+	    slots
+    }
+  }
+`;
+
+const getAllVehicalsQuery = `
+  query{
+    vehicals{
+      name
+	    type
+	    brand
+	    year
+	    vehical_no
+	    client_id
+	    slots
+    }
+  }
+`;
+
 export {
   loginUserQuery,
   signUpQuery,
@@ -133,5 +161,7 @@ export {
   getBookingQuery,
   getAllBookingsQuery,
   getPlanByNameQuery,
-  getAllPlansQuery
+  getAllPlansQuery,
+  getVehicalByNameQuery,
+  getAllVehicalsQuery
 };

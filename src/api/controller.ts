@@ -8,9 +8,11 @@ import {
   getBookingQuery,
   getAllBookingsQuery,
   getPlanByNameQuery,
-  getAllPlansQuery
-
-} from "./query";
+  getAllPlansQuery,
+  getVehicalByNameQuery,
+  getAllVehicalsQuery
+}
+  from "./query";
 
 const loginUser = (email: string, password: string) => {
   return new Promise((resolve, reject) => {
@@ -180,6 +182,45 @@ const getAllPlans = () => {
   });
 }
 
+const getVehicalByName = (name: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getVehicalByNameQuery,
+        variables: {
+          name
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+}
+
+const getAllVehicals = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: getAllVehicalsQuery,
+        variables: {
+
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+}
+
+
+
 export {
   loginUser,
   signUpUser,
@@ -188,5 +229,7 @@ export {
   getBookingById,
   getAllBookings,
   getPlanByName,
-  getAllPlans
+  getAllPlans,
+  getVehicalByName,
+  getAllVehicals
 };
