@@ -187,6 +187,40 @@ const getAllSlotsQuery = `
   }
 `;
 
+const editUserMutation = `
+  mutation($id: String!
+    $name: String
+    $email: String
+    $password: String
+    $address: String
+    $city: String
+    $gender: String
+    $phoneNumber: String
+    $type: String){
+      editUser(
+        id: $id
+        name: $name
+        email: $email
+        password: $password
+        address: $address
+        city: $city
+        gender: $gender
+        phoneNumber: $phoneNumber
+        type:$type
+        ){
+            id
+            name
+            email
+            password
+            address
+            city
+            gender
+            phoneNumber
+            type
+        }
+    }
+
+`;
 
 export {
   loginUserQuery,
@@ -200,6 +234,7 @@ export {
   getVehicalByNameQuery,
   getAllVehicalsQuery,
   getSlotByIdQuery,
-  getAllSlotsQuery
+  getAllSlotsQuery,
+  editUserMutation
 };
 

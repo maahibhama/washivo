@@ -12,7 +12,8 @@ import {
   getVehicalByNameQuery,
   getAllVehicalsQuery,
   getSlotByIdQuery,
-  getAllSlotsQuery
+  getAllSlotsQuery,
+  editUserMutation
 }
   from "./query";
 
@@ -259,6 +260,43 @@ const getAllSlots = () => {
   });
 }
 
+const editUser = (id: string,
+  name: string,
+  email: string,
+  password: string,
+  address: string,
+  city: string,
+  gender: string,
+  phoneNumber: string,
+  type: string
+) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(baseUrl, {
+        query: editUserMutation,
+        variables: {
+          id,
+          name,
+          email,
+          password,
+          address,
+          city,
+          gender,
+          phoneNumber,
+          type,
+        },
+      }).then(response => {
+        console.log(response);
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  });
+
+
+}
+
 export {
   loginUser,
   signUpUser,
@@ -271,5 +309,6 @@ export {
   getVehicalByName,
   getAllVehicals,
   getSlotByIdStartTime,
-  getAllSlots
+  getAllSlots,
+  editUser
 };
