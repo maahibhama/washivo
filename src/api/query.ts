@@ -10,7 +10,7 @@ const loginUserQuery = `
       }
     }`;
 
-const signUpQuery = `
+const signUpMutation = `
 mutation(
   $name: String!
   $email: String!
@@ -187,9 +187,10 @@ const getAllSlotsQuery = `
   }
 `;
 
+
 export {
   loginUserQuery,
-  signUpQuery,
+  signUpMutation,
   getUserQuery,
   getAllUsersQuery,
   getBookingQuery,

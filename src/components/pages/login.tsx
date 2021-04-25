@@ -31,13 +31,15 @@ const Login = () => {
 
     setLoading(true);
 
+    debugger;
 
     loginUser(values.email, values.password ).then(res => {
-
+      debugger;
       console.log(res);
 
     }).catch(err=>{
       setLoading(false);
+
       alert(err);
       console.log(err);
       debugger;

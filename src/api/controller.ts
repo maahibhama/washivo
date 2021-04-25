@@ -2,7 +2,7 @@ import axios from "axios";
 import { baseUrl } from "./connection";
 import {
   loginUserQuery,
-  signUpQuery,
+  signUpMutation,
   getUserQuery,
   getAllUsersQuery,
   getBookingQuery,
@@ -50,7 +50,7 @@ const signUpUser = (name: string,
   return new Promise((resolve, reject) => {
     axios
       .post(baseUrl, {
-        query: signUpQuery,
+        query: signUpMutation,
         variables: {
           name,
           email,
@@ -270,5 +270,6 @@ export {
   getAllPlans,
   getVehicalByName,
   getAllVehicals,
-  getSlotByIdStartTime
+  getSlotByIdStartTime,
+  getAllSlots
 };
