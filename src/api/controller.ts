@@ -19,6 +19,7 @@ import {
   from "./query";
 
 const loginUser = (email: string, password: string) => {
+  debugger;
   return new Promise((resolve, reject) => {
     axios
       .post(baseUrl, {

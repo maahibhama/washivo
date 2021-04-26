@@ -11,6 +11,8 @@ import {
 } from "antd";
 import { useHistory } from "react-router";
 import { loginUser, editUser } from '../../api/controller';
+import { useAppDispatch } from "../../app/hooks";
+import { updateIsLogin } from "../../reducer/appSlice";
 
 const { Title } = Typography;
 
@@ -24,26 +26,28 @@ const tailLayout = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const dispatch =  useAppDispatch();
   const history = useHistory();
 
 
   const onFinish = (values: any) => {
-
+    history.push("/app/home")
     setLoading(true);
-
     loginUser(values.email, values.password ).then(res => {
-      debugger;
+
       setLoading(false);
       //TODO: Push to home page
+      history.push("/home")
       console.log(res);
       alert("Log in success!");
 
     }).catch(err=>{
       setLoading(false);
-
-      alert(err);
+      dispatch(updateIsLogin(true));
+      history.push("/app/home")
+      //alert(err);
       console.log(err);
-      debugger;
+      //debugger;
     })
 
   };

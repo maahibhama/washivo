@@ -1,9 +1,9 @@
 import React from 'react';
-import ApplicationRoutes from "./config/ApplicationRoutes";
+import AppRoutes from "./config/AppRoutes";
 
 function App() {
   return (
-    <ApplicationRoutes />
+    <AppRoutes />
   );
 }
 

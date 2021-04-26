@@ -9,17 +9,18 @@ import SideNav from "../components/layouts/sidebar";
 
 import { Layout } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import Login from "../components/pages/login";
-import Signup from "../components/pages/signup";
+
 import Home from "../components/pages/home";
 import AddPlan from "../components/pages/addplan";
 import AddBooking from "../components/pages/addbooking";
+import { getIsLogin } from "../reducer/appSlice";
+import { store } from "../app/store";
 
 const { Header, Sider, Content } = Layout;
 
 const ApplicationRoutes = () => {
   const [collapse, setCollapse] = useState(false);
-
+  const isLogin = getIsLogin(store.getState());
   useEffect(() => {
     window.innerWidth <= 760 ? setCollapse(true) : setCollapse(false);
   }, []);
@@ -57,12 +58,10 @@ const ApplicationRoutes = () => {
             }}
           >
             <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
               <Route path="/home" component={Home} />
               <Route path="/addplan" component={AddPlan} />
               <Route path="/addbooking" component={AddBooking} />
-              <Redirect to="/home" from="/" />
+              <Redirect to="/home" from="/app" />
             </Switch>
           </Content>
         </Layout>
