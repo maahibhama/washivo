@@ -10,7 +10,7 @@ import {
   Checkbox,
 } from "antd";
 import { useHistory } from "react-router";
-import { loginUser } from '../../api/controller';
+import { loginUser, editUser } from '../../api/controller';
 
 const { Title } = Typography;
 
@@ -31,13 +31,16 @@ const Login = () => {
 
     setLoading(true);
 
-
     loginUser(values.email, values.password ).then(res => {
-
+      debugger;
+      setLoading(false);
+      //TODO: Push to home page
       console.log(res);
+      alert("Log in success!");
 
     }).catch(err=>{
       setLoading(false);
+
       alert(err);
       console.log(err);
       debugger;
